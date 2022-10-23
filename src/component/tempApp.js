@@ -26,7 +26,7 @@ export default function TempApp(){
         }
         }
         getLocation();
-    }, [,])
+    }, [])
 
     useEffect(()=>{
         const fetchLocationBasedApi = async () =>{
@@ -48,7 +48,7 @@ export default function TempApp(){
             const resJson = await response.json();
             setResult(resJson.main);
             console.log(resJson);
-            console.log(resJson.weather[0].main);
+            console.log(resJson.weather[0].description);
         }
         fetchCityBasedApi();
     }, [city])
