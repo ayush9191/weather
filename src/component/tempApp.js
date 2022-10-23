@@ -2,9 +2,14 @@ import React, {useEffect, useState} from 'react'
 import './css/style.css';
 
 export default function TempApp(){
-    const [city, setCity] = useState("");       
-    const [result, setResult] = useState("");
+    //for Image API
+    const [img, setImg] = useState("");
+    const [res, setRes] = useState([]); 
+    
+    const [city, setCity] = useState(""); //for City   
+    const [result, setResult] = useState(""); //for weather API Data
 
+    //For Location based API
     const [lat, setLat] = useState("");
     const [lng, setLng] = useState("");
     const [status, setStatus] = useState(null);
@@ -35,8 +40,10 @@ export default function TempApp(){
             const resJson = await response.json();
             setResult(resJson.main);
             setCity(resJson.name);
-            console.log(resJson);
-            
+            //console.log(resJson);
+            //console.log(resJson.weather[0].description);
+            setImg(resJson.weather[0].description);
+
         }
         fetchLocationBasedApi();
     }, [lat, lng])
@@ -47,8 +54,9 @@ export default function TempApp(){
             const response = await fetch(url);
             const resJson = await response.json();
             setResult(resJson.main);
-            console.log(resJson);
-            console.log(resJson.weather[0].description);
+            //console.log(resJson);
+            //console.log(resJson.weather[0].description);
+            setImg(resJson.weather[0].description);
         }
         fetchCityBasedApi();
     }, [city])
@@ -57,9 +65,27 @@ export default function TempApp(){
         setCity(event.target.value);
     }
 
+    useEffect(() => {
+        const fetchRequest = async () => {
+            const data = await fetch(
+             `https://api.unsplash.com/search/photos?page=1&query=${img}&client_id=JJg-GcAzkuhUWL2OAV0SqUF5IiSYcCMvqwcA1o9wiJY`
+            );
+            const dataJ = await data.json();
+            const result = dataJ.results;
+            //console.log(result[0].urls.regular);
+            setRes(result[0].urls.regular);
+        };
+        fetchRequest();
+    }, [img]);
+
     return(
         <>
-            <div className="box">
+            {/* <div className="container">
+            <img src={res} width={500} height={300} alt="" />
+            </div> */}
+
+            <div style={{ backgroundImage:`url(${res})`,backgroundSize:"Cover", height:745, width:1536 }}>
+                <div className="box">
                     <div className="inputData">
                         <input type="search" 
                         className='inputField' 
@@ -85,6 +111,9 @@ export default function TempApp(){
                         </> 
                 )}
             </div>
+            </div>
+            
+            
         </>
     )
 }

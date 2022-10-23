@@ -3,8 +3,7 @@ import TempApp from './component/tempApp';
 
 function App() {
   return (
-      <div className="container">
-        <h1 className="title">React Photo Search</h1>
+      <div>
         <TempApp/>
       </div>
   );
