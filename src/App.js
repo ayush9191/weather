@@ -1,7 +1,6 @@
 import React from 'react';
 import TempApp from './component/tempApp';
 
-import Geolocation from './component/geoLocation';
 function App() {
   return (
       <div className="container">
