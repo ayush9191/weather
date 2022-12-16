@@ -16,7 +16,14 @@ body {
     width: 100vw;
     font-family: "Jost", sans-serif;
 }
-
+.bodyImage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 206vh;
+        background: #000;
+}
 input{
     border: none;
 }
@@ -32,10 +39,11 @@ html {
 
 .box {
     width: 35vw;
-    height: 60vh;
+    height: 10vh;
+    padding: 15px;
     border-radius: 0.5rem;
     box-shadow: 0 0.2rem 3rem rgba(0, 0, 0, 0.2);
-    background: #a5bbdd;
+    /* background: #a5bbdd; */
     position: relative;
     overflow: hidden;
     transform: translate3d(0, 0, 0);
@@ -74,6 +82,8 @@ html {
 .box::after {
     content: "";
     display: block;
+    margin: auto;
+    text-align: center;
     left: 0;
     top: 0;
     width: 100%;

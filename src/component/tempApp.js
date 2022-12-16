@@ -84,7 +84,9 @@ export default function TempApp(){
             <img src={res} width={500} height={300} alt="" />
             </div> */}
 
-            <div style={{ backgroundImage:`url(${res})`,backgroundSize:"Cover", height:745, width:1536 }}>
+            {/* <div className = 'body' style={{ backgroundImage:`url(${res})`,backgroundSize:"Cover", height:745, width:1536 }}>*/}
+            <div  className = 'bodyImage' style={{ backgroundImage: `url(${res})`, backgroundSize:"Cover"}}>
+                
                 <div className="box">
                     <div className="inputData">
                         <input type="search" 
@@ -110,8 +112,9 @@ export default function TempApp(){
                         <div className="wave -three"></div>
                         </> 
                 )}
+                </div>
             </div>
-            </div>
+            {/* </div> */}
             
             
         </>
